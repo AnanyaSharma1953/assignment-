@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<math.h>
+int pal(int);
+int ar(int);
+int pr(int);
+int s(int);
+int main()
+{
+	int n,p1,a1,pr1,s1;
+	printf("enter n\n");
+	scanf("%d",&n);
+	int a[100];
+	for(int i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	for(int i=0;i<n;i++)
+	{
+		if(pal(a[i])==1)
+			p1++;
+		if(ar(a[i])==1)
+			a1++;
+		if(pr(a[i])==1)
+			pr1++;
+		if(s(a[i])==1)
+			s1++;
+	}
+	printf("palindrome no. are %d\n",p1);
+	printf("arm no. are %d\n",a1);
+	printf("prime no. are %d\n",pr1);
+	printf("sum no. are %d",s1);
+}
+int pal(int x)
+{
+	int rev=0,x1=x;
+	while(x>0)
+	{
+	   rev=(rev*10)+(x%10);
+	   x=x/10;
+	   }
+	   if(rev==x1)
+	   	return 1;
+	   	else
+	   	return 0;
+	   
+	}
+	int ar(int x)
+	{
+	int o=0,d=0,x1=x,x2=x;
+	while(x1>0)
+	 {
+	    x1=x1/10;
+	    d++;
+	 }
+	 while(x>0)
+	 {
+	 int m=x%10;
+	 o=o+pow(m,d);
+	 x=x/10;
+}
+if(o==x2)
+return 1;
+else
+return 0;
+	}
+int pr(int x)
+{
+int f=0;
+   for(int i=2;i<=x/2;i++)
+   {
+      if(x%i==0)
+       {  f=1;
+       break;
+       }
+   }
+   if(f==0)
+   return 1;
+   else
+    return 0;
+} 
+int s(int x)
+{
+    int so=0;
+    while(x>0)
+    {
+    	so=so+x%10;
+    	x=x/10;
+	}
+	if(so<10)
+	return 1;
+	else
+	return 0;
+}
